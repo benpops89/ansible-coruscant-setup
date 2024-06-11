@@ -1,0 +1,20 @@
+---
+
+zfs_pools:
+  - name: hddpool
+    members: >-
+      raidz2
+      /dev/disk/by-id/wwn-0x5000c500e58606ec
+      /dev/disk/by-id/wwn-0x5000c500e3dbc715
+      /dev/disk/by-id/wwn-0x5000c500e3dbd6f0
+      /dev/disk/by-id/wwn-0x5000c500e47c0c9c
+      /dev/disk/by-id/wwn-0x5000c500e3dbff3f
+      /dev/disk/by-id/wwn-0x5000c500e630b821
+  - name: ssdpool
+    members: >-
+      mirror
+      /dev/disk/by-id/wwn-0x5002538fc251802d
+      /dev/disk/by-id/wwn-0x5002538fc22136fa
+      mirror
+      /dev/disk/by-id/wwn-0x5002538fc2517ff6
+      /dev/disk/by-id/wwn-0x5002538f427192b6

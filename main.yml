@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: true
+  gather_facts: true
+
+  vars_files:
+    - config.yml
+
+  tasks:
+    - name: Install ZFS and prerequisites
+      ansible.builtin.package:
+        name:
+          - linux-headers-generic
+          - zfs-dkms
+          - zfsutils-linux
+
+    - name: Create ZFS pools
+      ansible.builtin.command:
+        cmd: zpool create {{ item.name }} {{ item.members }} -f
+        creates: /{{ item.name }}
+      loop: "{{ zfs_pools }}"
